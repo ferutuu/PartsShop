@@ -5,98 +5,137 @@ import Components.GPU;
 import Components.MB;
 import Components.RAM;
 
-import java.util.Scanner;
+import java.util.List;
+
+import static Functionality.InputValidate.getValidInput;
 
 public class SearchItem {
 
-    public static void browseCPU(CPU[] cpuList, Cart cart) {
-        System.out.println("CPUs in stock:\n");
-        for(int i = 0; i < cpuList.length; i++)
-            System.out.println((i+1) + ". " + cpuList[i].getManufacturer() + " " + cpuList[i].getModel()
-                    + " " + cpuList[i].getSocket());
+    public static void browseCPU(List<CPU> cpuList, Cart cart) {
+
         System.out.println("""
                 
-                Which CPU would you like to inspect?
+                ==============================================================================
+                                                
+                                                CPUs in stock
                 """);
-        Scanner scan = new Scanner(System.in);
-        int choice = scan.nextInt();
-        for(int j = 0; j <= cpuList.length; j++){
+        for(int i = 0; i < cpuList.size(); i++)
+            System.out.println((i+1) + ". " + cpuList.get(i).getManufacturer() + " " + cpuList.get(i).getModel()
+                    + " " + cpuList.get(i).getSocket() + '\n');
+        System.out.println("""
+                
+                                     Which CPU would you like to inspect?
+                                      
+                ==============================================================================                      
+                """);
+        int choice = getValidInput();
+        System.out.println("\n==============================================================================\n");
+        for(int j = 0; j <= cpuList.size(); j++){
             if(choice == j){
-                System.out.println("The " + cpuList[j-1].getManufacturer() + " "
-                        + cpuList[j-1].getModel()  + " has " + cpuList[j-1].getCoreCount()
-                        + " cores and a clock speed of " + cpuList[j-1].getCoreClock()
-                        + "MHz. \nIt is compatible with an " + cpuList[j-1].getSocket()
-                        + " socket.\nPrice: " + cpuList[j-1].getPrice());
-                cart.addItem(cpuList[j-1]);
+                System.out.println("The " + cpuList.get(j - 1).getManufacturer() + " "
+                        + cpuList.get(j - 1).getModel()  + " has " + cpuList.get(j - 1).getCoreCount()
+                        + " cores and a clock speed of " + cpuList.get(j - 1).getCoreClock()
+                        + "MHz. \n\nIt is compatible with an " + cpuList.get(j - 1).getSocket()
+                        + " socket.\n\nPrice: " + cpuList.get(j - 1).getPrice());
+                System.out.println("\n==============================================================================\n");
+                cart.addItem(cpuList.get(j - 1));
             }
         }
     }
 
 
-    public static void browseGPU(GPU[] gpuList, Cart cart) {
-        System.out.println("GPUs in stock:\n");
-        for(int i = 0; i < gpuList.length; i++)
-            System.out.println((i+1) + ". " + gpuList[i].getManufacturer() + " " + gpuList[i].getModel());
+    public static void browseGPU(List<GPU> gpuList, Cart cart) {
+
         System.out.println("""
                 
-                Which GPU would you like to inspect?
+                ==============================================================================
+                                                
+                                                GPUs in stock
                 """);
-        Scanner scan = new Scanner(System.in);
-        int choice = scan.nextInt();
-        for(int j = 0; j <= gpuList.length; j++){
+        for(int i = 0; i < gpuList.size(); i++)
+            System.out.println((i+1) + ". " + gpuList.get(i).getManufacturer() + " " + gpuList.get(i).getModel() + '\n');
+        System.out.println("""
+                
+                                     Which GPU would you like to inspect?
+                                      
+                ==============================================================================                      
+                """);
+        int choice = getValidInput();
+        System.out.println("\n==============================================================================\n");
+        for(int j = 0; j <= gpuList.size(); j++){
             if(choice == j){
-                System.out.println("The " + gpuList[j-1].getManufacturer() + " "
-                        + gpuList[j-1].getModel() + " has " + gpuList[j-1].getVideoMemory()
-                        + "GB of VRAM and a core clock of " + gpuList[j-1].getCoreClock() +"MHz.\nPrice: "
-                        + gpuList[j-1].getPrice());
-                cart.addItem(gpuList[j-1]);
+                System.out.println("The " + gpuList.get(j - 1).getManufacturer() + " "
+                        + gpuList.get(j - 1).getModel() + " has " + gpuList.get(j - 1).getVideoMemory()
+                        + "GB of VRAM and a core clock of " + gpuList.get(j - 1).getCoreClock() +"MHz.\n\nPrice: "
+                        + gpuList.get(j - 1).getPrice());
+                System.out.println("\n==============================================================================\n");
+                cart.addItem(gpuList.get(j - 1));
             }
         }
     }
 
 
-    public static void browseRAM(RAM[] ramList, Cart cart) {
-        System.out.println("Components.RAM in stock:\n");
-        for (int i = 0; i < ramList.length; i++)
-            System.out.println((i+1) + ". " + ramList[i].getManufacturer() + " " + ramList[i].getModel() + " "
-                    + ramList[i].getCapacity() + "GB " + ramList[i].getMemoryType());
+    public static void browseRAM(List<RAM> ramList, Cart cart) {
+
         System.out.println("""
                 
-                Which Components.RAM would you like to inspect?
+                ==============================================================================
+                                                
+                                                RAM in stock
                 """);
-        Scanner scan = new Scanner(System.in);
-        int choice = scan.nextInt();
-        for(int j = 0; j <= ramList.length; j++){
+        for (int i = 0; i < ramList.size(); i++)
+            System.out.println((i+1) + ". " + ramList.get(i).getManufacturer() + " " + ramList.get(i).getModel() + " "
+                    + ramList.get(i).getCapacity() + "GB " + ramList.get(i).getMemoryType() + '\n');
+        System.out.println("""
+                
+                                     Which RAM would you like to inspect?
+                                      
+                ==============================================================================                      
+                """);
+        int choice = getValidInput();
+        System.out.println("\n==============================================================================\n");
+        for(int j = 0; j <= ramList.size(); j++){
             if(choice == j){
-                System.out.println("The " + ramList[j-1].getManufacturer() + " " + ramList[j-1].getModel()
-                        + " kit contains " + ramList[j-1].getStickNum() + " sticks of " + ramList[j-1].getCapacity()/2
-                        + "GB " + ramList[j-1].getMemoryType() + " Components.RAM running at " + ramList[j-1].getFrequency() + " MHz." +
-                        "\nThis kit will provide " + ramList[j-1].getCapacity() + "GB of " + ramList[j-1].getMemoryType()
-                        + " Components.RAM.\nPrice: " + ramList[j-1].getPrice());
-                cart.addItem(ramList[j-1]);
+                System.out.println("The " + ramList.get(j - 1).getManufacturer() + " " + ramList.get(j - 1).getModel()
+                        + " kit has " + ramList.get(j - 1).getStickNum() + " " + ramList.get(j - 1).getCapacity()/2
+                        + "GB sticks running at " + ramList.get(j - 1).getFrequency() + " MHz." +
+                        "\n\nThis kit will provide " + ramList.get(j - 1).getCapacity() + "GB of " + ramList.get(j - 1).getMemoryType()
+                        + " RAM.\n\nPrice: " + ramList.get(j - 1).getPrice());
+                System.out.println("\n==============================================================================\n");
+                cart.addItem(ramList.get(j - 1));
             }
         }
     }
 
 
-    public static void browseMB(MB[] mbList, Cart cart) {
-        System.out.println("Motherboards in stock:\n");
-        for(int i = 0; i < mbList.length; i++)
-            System.out.println((i+1) + ". " + mbList[i].getManufacturer() + " " + mbList[i].getChipset()
-                    + " " + mbList[i].getModel() + " " + mbList[i].getSocket());
+    public static void browseMB(List<MB> mbList, Cart cart) {
+
         System.out.println("""
                 
-                Which Motherboard would you like to inspect?
+                ==============================================================================
+                                                
+                                                 MBs in stock
                 """);
-        Scanner scan = new Scanner(System.in);
-        int choice = scan.nextInt();
-        for(int j = 0; j <= mbList.length; j++){
+        for(int i = 0; i < mbList.size(); i++)
+            System.out.println((i+1) + ". " + mbList.get(i).getManufacturer() + " " + mbList.get(i).getChipset()
+                    + " " + mbList.get(i).getModel() + " " + mbList.get(i).getSocket() + '\n');
+        System.out.println("""
+                
+                                     Which MB would you like to inspect?
+                                      
+                ==============================================================================                      
+                """);
+        int choice = getValidInput();
+        System.out.println("\n==============================================================================\n");
+        for(int j = 0; j <= mbList.size(); j++){
             if(choice == j){
-                System.out.println("The " + mbList[j-1].getManufacturer() + " " + mbList[j-1].getChipset() + " " + mbList[j-1].getModel()
-                + " has an " + mbList[j-1].getSocket() + " socket and supports " + mbList[j-1].getMemoryType() + " memory.\nPrice: "
-                + mbList[j-1].getPrice());
-                cart.addItem(mbList[j-1]);
+                System.out.println("The " + mbList.get(j - 1).getManufacturer() + " " + mbList.get(j - 1).getChipset() + " " + mbList.get(j - 1).getModel()
+                + " has an " + mbList.get(j - 1).getSocket() + " socket and supports " + mbList.get(j - 1).getMemoryType() + " memory.\n\nPrice: "
+                + mbList.get(j - 1).getPrice());
+                System.out.println("\n==============================================================================\n");
+                cart.addItem(mbList.get(j - 1));
             }
         }
     }
+
 }

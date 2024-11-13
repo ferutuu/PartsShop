@@ -11,6 +11,7 @@ public class GPU implements gpuSpecs {
     public int videoMemory;
 
     public GPU(String manufacturer, String model, int coreClock, int videoMemory, int price) {
+
         this.manufacturer = manufacturer;
         this.model = model;
         this.price = price;

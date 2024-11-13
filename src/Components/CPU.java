@@ -12,6 +12,7 @@ public class CPU implements cpuSpecs {
     public int coreCount;
 
     public CPU(String manufacturer, String model, String socket, int coreClock, int coreCount, int price) {
+
         this.manufacturer = manufacturer;
         this.model = model;
         this.price = price;
