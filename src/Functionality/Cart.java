@@ -23,7 +23,6 @@ public class Cart {
 
     public void addItem(Object item) {
 
-        Scanner scan = new Scanner(System.in);
         System.out.println("""
                                  Would you like to add this item to the cart?
                                 
@@ -107,6 +106,7 @@ public class Cart {
         CPU selectedCPU = null;
         MB selectedMB = null;
         RAM selectedRAM = null;
+        GPU selectedGPU = null;
 
         for(Object item : cartItems){
 
@@ -118,6 +118,9 @@ public class Cart {
 
             if(item instanceof RAM ram)
                 selectedRAM = ram;
+
+            if(item instanceof GPU gpu)
+                selectedGPU = gpu;
         }
 
         if(selectedCPU != null && selectedMB != null) {
@@ -144,6 +147,9 @@ public class Cart {
 
         if(selectedRAM == null)
             System.out.println("There is no RAM in your cart.\n");
+
+        if(selectedGPU == null)
+            System.out.println("There is no GPU in your cart.\n");
     }
 
     public boolean isEmpty() {
