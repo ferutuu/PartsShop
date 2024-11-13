@@ -91,11 +91,11 @@ public class Cart {
         }
 
         if(selectedCPU == null)
-            System.out.println("CPU missing.");
+            System.out.println("There is no CPU in your build.");
         if(selectedMB == null)
-            System.out.println("Motherboard missing.");
+            System.out.println("There is no Motherboard in your build.");
         if(selectedRAM == null)
-            System.out.println("Memory missing.");
+            System.out.println("There is no RAM in your build.");
     }
 
     public boolean isEmpty() {
