@@ -20,8 +20,7 @@ public class SearchItem {
                                                 CPUs in stock
                 """);
         for(int i = 0; i < cpuList.size(); i++)
-            System.out.println((i+1) + ". " + cpuList.get(i).getManufacturer() + " " + cpuList.get(i).getModel()
-                    + " " + cpuList.get(i).getSocket() + '\n');
+            System.out.println((i+1) + ". " + cpuList.get(i).getManufacturer() + " " + cpuList.get(i).getModel() + '\n');
         System.out.println("""
                 
                                      Which CPU would you like to inspect?
