@@ -13,6 +13,7 @@ public class RAM implements ramSpecs {
     public int stickNum;
 
     public RAM(String manufacturer, String model, String memoryType, int frequency, int capacity, int stickNum, int price) {
+
         this.manufacturer = manufacturer;
         this.model = model;
         this.price = price;
